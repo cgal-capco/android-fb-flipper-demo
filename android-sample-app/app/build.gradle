@@ -121,6 +121,10 @@ dependencies {
 
     implementation Libs.Coil.coilCompose
 
+    debugImplementation Libs.Flipper.flipper
+    debugImplementation Libs.Flipper.soloader
+    releaseImplementation Libs.Flipper.noOp
+
     androidTestImplementation Libs.JUnit.junit
     androidTestImplementation Libs.AndroidX.Test.core
     androidTestImplementation Libs.AndroidX.Test.runner

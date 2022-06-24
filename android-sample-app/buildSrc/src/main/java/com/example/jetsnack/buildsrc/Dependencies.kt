@@ -103,4 +103,10 @@ object Libs {
     object Coil {
         const val coilCompose = "io.coil-kt:coil-compose:2.0.0"
     }
+
+    object Flipper {
+        const val flipper = "com.facebook.flipper:flipper:0.150.0"
+        const val soloader = "com.facebook.soloader:soloader:0.10.1"
+        const val noOp = "com.facebook.flipper:flipper-noop:0.151.0"
+    }
 }
