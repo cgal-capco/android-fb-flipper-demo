@@ -127,6 +127,10 @@ dependencies {
 
     implementation Libs.Coil.coilCompose
 
+    implementation Libs.Room.runtime
+    kapt Libs.Room.compiler
+    implementation Libs.Room.kotlinExtensions
+
     debugImplementation Libs.Flipper.flipper
     debugImplementation Libs.Flipper.soloader
     releaseImplementation Libs.Flipper.noOp

@@ -116,6 +116,14 @@ object Libs {
         const val coilCompose = "io.coil-kt:coil-compose:2.0.0"
     }
 
+    object Room {
+        private const val version = "2.4.2"
+
+        const val runtime = "androidx.room:room-runtime:$version"
+        const val compiler = "androidx.room:room-compiler:$version"
+        const val kotlinExtensions = "androidx.room:room-ktx:$version"
+    }
+
     object Flipper {
         const val flipper = "com.facebook.flipper:flipper:0.150.0"
         const val soloader = "com.facebook.soloader:soloader:0.10.1"

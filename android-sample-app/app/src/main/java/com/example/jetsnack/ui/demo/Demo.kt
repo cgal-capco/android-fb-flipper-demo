@@ -1,6 +1,8 @@
 package com.example.jetsnack.ui.demo
 
 import android.content.res.Configuration
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -18,6 +20,7 @@ fun Demo(
     modifier: Modifier = Modifier,
     viewModel: DemoViewModel = hiltViewModel()
 ) {
+
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = modifier
@@ -25,6 +28,18 @@ fun Demo(
             .wrapContentSize()
             .padding(24.dp)
     ) {
+        JetsnackButton(
+            modifier = Modifier.fillMaxWidth(),
+            onClick = {
+                viewModel.seedSqlDatabase()
+            }) {
+            Text(
+                text = "Seed database",
+                modifier = Modifier.fillMaxWidth(),
+                textAlign = TextAlign.Center
+            )
+        }
+        Spacer(Modifier.height(24.dp))
         JetsnackButton(
             modifier = Modifier.fillMaxWidth(),
             onClick = {
