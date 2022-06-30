@@ -37,10 +37,7 @@ import androidx.compose.material.Icon
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.outlined.AccountCircle
-import androidx.compose.material.icons.outlined.Home
-import androidx.compose.material.icons.outlined.Search
-import androidx.compose.material.icons.outlined.ShoppingCart
+import androidx.compose.material.icons.outlined.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -65,11 +62,14 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.util.lerp
 import androidx.core.os.ConfigurationCompat
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavBackStackEntry
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
 import com.example.jetsnack.R
 import com.example.jetsnack.ui.components.JetsnackSurface
+import com.example.jetsnack.ui.demo.Demo
+import com.example.jetsnack.ui.demo.DemoViewModel
 import com.example.jetsnack.ui.home.cart.Cart
 import com.example.jetsnack.ui.home.search.Search
 import com.example.jetsnack.ui.theme.JetsnackTheme
@@ -91,6 +91,11 @@ fun NavGraphBuilder.addHomeGraph(
     composable(HomeSections.PROFILE.route) {
         Profile(modifier)
     }
+    composable(HomeSections.DEMO.route) {
+//        val viewModel = hiltViewModel<DemoViewModel>()
+//        Demo(modifier = modifier, viewModel = viewModel)
+        Demo()
+    }
 }
 
 enum class HomeSections(
@@ -101,7 +106,8 @@ enum class HomeSections(
     FEED(R.string.home_feed, Icons.Outlined.Home, "home/feed"),
     SEARCH(R.string.home_search, Icons.Outlined.Search, "home/search"),
     CART(R.string.home_cart, Icons.Outlined.ShoppingCart, "home/cart"),
-    PROFILE(R.string.home_profile, Icons.Outlined.AccountCircle, "home/profile")
+    PROFILE(R.string.home_profile, Icons.Outlined.AccountCircle, "home/profile"),
+    DEMO(R.string.home_demo, Icons.Outlined.Android, "home/demo")
 }
 
 @Composable

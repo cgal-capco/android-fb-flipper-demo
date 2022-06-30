@@ -21,11 +21,21 @@ object Versions {
 }
 
 object Libs {
-    const val androidGradlePlugin = "com.android.tools.build:gradle:7.2.1"
+    object Android {
+        const val gradlePlugin = "com.android.tools.build:gradle:7.2.1"
+
+        const val hiltVersion = "2.40"
+
+        const val hiltPlugin = "com.google.dagger:hilt-android-gradle-plugin:$hiltVersion"
+        const val hilt = "com.google.dagger:hilt-android:$hiltVersion"
+        const val hiltCompiler = "com.google.dagger:hilt-android-compiler:$hiltVersion"
+        const val hiltNavigation = "androidx.hilt:hilt-navigation-compose:1.0.0"
+    }
 
     object Accompanist {
         const val version = "0.24.11-rc"
-        const val systemuicontroller = "com.google.accompanist:accompanist-systemuicontroller:$version"
+        const val systemuicontroller =
+            "com.google.accompanist:accompanist-systemuicontroller:$version"
         const val flowlayouts = "com.google.accompanist:accompanist-flowlayout:$version"
     }
 
@@ -85,10 +95,12 @@ object Libs {
             const val core = "androidx.test:core:$version"
             const val runner = "androidx.test:runner:$version"
             const val rules = "androidx.test:rules:$version"
+
             object Ext {
                 private const val version = "1.1.2"
                 const val junit = "androidx.test.ext:junit-ktx:$version"
             }
+
             const val espressoCore = "androidx.test.espresso:espresso-core:3.2.0"
             const val macroBenchmark = "androidx.benchmark:benchmark-macro-junit4:1.1.0-beta04"
             const val uiAutomator = "androidx.test.uiautomator:uiautomator:2.2.0"
@@ -107,6 +119,11 @@ object Libs {
     object Flipper {
         const val flipper = "com.facebook.flipper:flipper:0.150.0"
         const val soloader = "com.facebook.soloader:soloader:0.10.1"
-        const val noOp = "com.facebook.flipper:flipper-noop:0.151.0"
+        const val noOp = "com.facebook.flipper:flipper-noop:0.150.0"
+    }
+
+    object LeakCanary {
+        const val leakCanary = "com.squareup.leakcanary:leakcanary-android:2.9.1"
+        const val flipperPlugin = "com.facebook.flipper:flipper-leakcanary2-plugin:0.150.0"
     }
 }

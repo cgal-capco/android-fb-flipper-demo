@@ -20,6 +20,8 @@ plugins {
     id 'com.android.application'
     id 'kotlin-android'
     id 'kotlin-parcelize'
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
 }
 
 android {
@@ -95,9 +97,13 @@ android {
 
 dependencies {
     implementation Libs.Kotlin.stdlib
-    implementation Libs.Coroutines.android
 
+    implementation Libs.Coroutines.android
     implementation Libs.Coroutines.core
+
+    implementation Libs.Android.hilt
+    implementation Libs.Android.hiltNavigation
+    kapt Libs.Android.hiltCompiler
 
     implementation Libs.AndroidX.coreKtx
     implementation Libs.AndroidX.Activity.activityCompose
@@ -124,6 +130,9 @@ dependencies {
     debugImplementation Libs.Flipper.flipper
     debugImplementation Libs.Flipper.soloader
     releaseImplementation Libs.Flipper.noOp
+
+    debugImplementation Libs.LeakCanary.leakCanary
+    debugImplementation Libs.LeakCanary.flipperPlugin
 
     androidTestImplementation Libs.JUnit.junit
     androidTestImplementation Libs.AndroidX.Test.core

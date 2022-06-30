@@ -21,6 +21,7 @@
     <string name="home_search">Search</string>
     <string name="home_cart">My Cart</string>
     <string name="home_profile">Profile</string>
+    <string name="home_demo">Demo</string>
 
     <!-- Home -->
     <string name="label_filters">Filters</string>
