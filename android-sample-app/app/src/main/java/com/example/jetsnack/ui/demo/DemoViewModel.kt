@@ -1,6 +1,7 @@
 package com.example.jetsnack.ui.demo
 
 import android.os.Build
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.jetsnack.core.AppSettings
@@ -8,6 +9,7 @@ import com.example.jetsnack.database.daos.ProductDao
 import com.example.jetsnack.database.daos.UserDao
 import com.example.jetsnack.database.entities.ProductEntity
 import com.example.jetsnack.database.entities.UserEntity
+import com.example.jetsnack.network.GithubService
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -20,7 +22,8 @@ import javax.inject.Inject
 class DemoViewModel @Inject constructor(
     private val appSettings: AppSettings,
     private val userDao: UserDao,
-    private val productDao: ProductDao
+    private val productDao: ProductDao,
+    private val githubService: GithubService
 ) : ViewModel() {
     fun resetAppSettings() {
         appSettings.counter = 0
@@ -49,6 +52,17 @@ class DemoViewModel @Inject constructor(
         appSettings.lastSyncDate = dateTime
     }
 
+    fun crashApp() {
+        viewModelScope.launch {
+            // Will crash because it's not launched from the correct IO dispatcher
+//            userDao.clearTable()
+
+            withContext(Dispatchers.IO) {
+                userDao.clearTable()
+            }
+        }
+    }
+
     fun seedSqlDatabase() {
         viewModelScope.launch {
             seedDatabase()
@@ -69,5 +83,13 @@ class DemoViewModel @Inject constructor(
             ProductEntity(title = "Cookie", description = "Chocolate chips cookie"),
             ProductEntity(title = "Donut", description = "A not very healthy donut"),
         )
+    }
+
+
+    fun searchGithub(userName: String) {
+        viewModelScope.launch {
+            Log.i("NETWORK", "Getting repos for $userName")
+            val results = githubService.listRepos(userName)
+        }
     }
 }

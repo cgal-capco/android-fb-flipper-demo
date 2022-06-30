@@ -127,6 +127,11 @@ dependencies {
 
     implementation Libs.Coil.coilCompose
 
+    implementation Libs.Network.okHttp
+    implementation Libs.Network.retrofit
+    implementation Libs.Network.gson
+    implementation Libs.Network.gsonConverter
+
     implementation Libs.Room.runtime
     kapt Libs.Room.compiler
     implementation Libs.Room.kotlinExtensions
@@ -137,6 +142,7 @@ dependencies {
 
     debugImplementation Libs.LeakCanary.leakCanary
     debugImplementation Libs.LeakCanary.flipperPlugin
+    debugImplementation Libs.LeakCanary.networkPluggin
 
     androidTestImplementation Libs.JUnit.junit
     androidTestImplementation Libs.AndroidX.Test.core

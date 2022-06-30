@@ -1,11 +1,14 @@
 package com.example.jetsnack.ui.demo
 
 import android.content.res.Configuration
-import android.os.Build
-import androidx.annotation.RequiresApi
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Text
+import androidx.compose.material.TextField
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
@@ -21,13 +24,28 @@ fun Demo(
     viewModel: DemoViewModel = hiltViewModel()
 ) {
 
+    val userName = remember { mutableStateOf("") }
+
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = modifier
             .fillMaxSize()
             .wrapContentSize()
             .padding(24.dp)
+            .verticalScroll(rememberScrollState())
     ) {
+        JetsnackButton(
+            modifier = Modifier.fillMaxWidth(),
+            onClick = {
+                viewModel.crashApp()
+            }) {
+            Text(
+                text = "Crash app",
+                modifier = Modifier.fillMaxWidth(),
+                textAlign = TextAlign.Center
+            )
+        }
+        Spacer(Modifier.height(24.dp))
         JetsnackButton(
             modifier = Modifier.fillMaxWidth(),
             onClick = {
@@ -99,6 +117,30 @@ fun Demo(
             }
         }
 
+        Spacer(Modifier.height(24.dp))
+        Column(modifier = Modifier.fillMaxWidth()) {
+            Text(
+                text = "Github user",
+                modifier = Modifier.fillMaxWidth(),
+            )
+            TextField(
+                modifier = Modifier.fillMaxWidth(),
+                value = userName.value,
+                onValueChange = { value ->
+                    userName.value = value
+                })
+            Spacer(Modifier.height(12.dp))
+            JetsnackButton(
+                onClick = {
+                    viewModel.searchGithub(userName.value)
+                }) {
+                Text(
+                    text = "Get Repos",
+                    modifier = Modifier.fillMaxWidth(),
+                    textAlign = TextAlign.Center
+                )
+            }
+        }
     }
 }
 

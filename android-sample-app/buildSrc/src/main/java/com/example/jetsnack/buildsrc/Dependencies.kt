@@ -124,6 +124,13 @@ object Libs {
         const val kotlinExtensions = "androidx.room:room-ktx:$version"
     }
 
+    object Network {
+        const val okHttp ="com.squareup.okhttp3:okhttp:4.10.0"
+        const val retrofit ="com.squareup.retrofit2:retrofit:2.9.0"
+        const val gson = "com.google.code.gson:gson:2.9.0"
+        const val gsonConverter = "com.squareup.retrofit2:converter-gson:2.9.0"
+    }
+
     object Flipper {
         const val flipper = "com.facebook.flipper:flipper:0.150.0"
         const val soloader = "com.facebook.soloader:soloader:0.10.1"
@@ -131,7 +138,10 @@ object Libs {
     }
 
     object LeakCanary {
+        private const val version = "0.150.0"
+
         const val leakCanary = "com.squareup.leakcanary:leakcanary-android:2.9.1"
-        const val flipperPlugin = "com.facebook.flipper:flipper-leakcanary2-plugin:0.150.0"
+        const val flipperPlugin = "com.facebook.flipper:flipper-leakcanary2-plugin:$version"
+        const val networkPluggin = "com.facebook.flipper:flipper-network-plugin:$version"
     }
 }
