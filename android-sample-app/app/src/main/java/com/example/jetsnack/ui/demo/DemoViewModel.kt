@@ -39,8 +39,8 @@ class DemoViewModel @Inject constructor(
         appSettings.counter = appSettings.counter - 1
     }
 
-    fun toggleFirstTimeOpen() {
-        appSettings.isFirstTimeOpen = !appSettings.isFirstTimeOpen
+    fun toggleFirstTimeOpen(isFirstTime: Boolean) {
+        appSettings.isFirstTimeOpen = isFirstTime
     }
 
     fun sync() {
@@ -56,10 +56,6 @@ class DemoViewModel @Inject constructor(
         viewModelScope.launch {
             // Will crash because it's not launched from the correct IO dispatcher
             userDao.clearTable()
-//
-//            withContext(Dispatchers.IO) {
-//                userDao.clearTable()
-//            }
         }
     }
 

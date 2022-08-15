@@ -4,6 +4,7 @@ import android.content.res.Configuration
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.Switch
 import androidx.compose.material.Text
 import androidx.compose.material.TextField
 import androidx.compose.runtime.Composable
@@ -25,6 +26,7 @@ fun Demo(
 ) {
 
     val userName = remember { mutableStateOf("") }
+    val checkedState = remember { mutableStateOf(false) }
 
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -82,6 +84,13 @@ fun Demo(
             )
         }
         Spacer(Modifier.height(24.dp))
+        Switch(
+            checked = checkedState.value,
+            onCheckedChange = {
+                checkedState.value = it
+                viewModel.toggleFirstTimeOpen(it)
+            }
+        )
         Column() {
             Text(
                 text = "Counter",
