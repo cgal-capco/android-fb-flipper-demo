@@ -55,11 +55,11 @@ class DemoViewModel @Inject constructor(
     fun crashApp() {
         viewModelScope.launch {
             // Will crash because it's not launched from the correct IO dispatcher
-//            userDao.clearTable()
-
-            withContext(Dispatchers.IO) {
-                userDao.clearTable()
-            }
+            userDao.clearTable()
+//
+//            withContext(Dispatchers.IO) {
+//                userDao.clearTable()
+//            }
         }
     }
 
@@ -89,7 +89,7 @@ class DemoViewModel @Inject constructor(
     fun searchGithub(userName: String) {
         viewModelScope.launch {
             Log.i("NETWORK", "Getting repos for $userName")
-            val results = githubService.listRepos(userName)
+            githubService.listRepos(userName)
         }
     }
 }

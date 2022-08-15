@@ -16,10 +16,13 @@
 
 package com.example.jetsnack.ui
 
+import android.graphics.drawable.Drawable
 import android.os.Bundle
+import android.widget.TextView
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.core.view.WindowCompat
+import com.example.jetsnack.R
 import dagger.hilt.android.AndroidEntryPoint
 
 
@@ -28,11 +31,24 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        forceMemoryLeak()
+
         // This app draws behind the system bars, so we want to handle fitting system windows
         WindowCompat.setDecorFitsSystemWindows(window, false)
 
         setContent {
             JetsnackApp()
         }
+    }
+
+    private var myBackground: Drawable? = null
+    private fun forceMemoryLeak() {
+        val textView = TextView(this)
+        textView.text = "Memory leaks are not good to applications"
+        if (myBackground == null) {
+            myBackground = getDrawable(R.drawable.ic_launcher_foreground)
+        }
+        textView.setBackgroundDrawable(myBackground)
+        setContentView(textView)
     }
 }

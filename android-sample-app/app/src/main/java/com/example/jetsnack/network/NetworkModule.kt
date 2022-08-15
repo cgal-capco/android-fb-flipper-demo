@@ -30,7 +30,6 @@ object NetworkModule {
             .build()
     }
 
-
     @Provides
     fun provideGithubService(
         okHttpClient: OkHttpClient
