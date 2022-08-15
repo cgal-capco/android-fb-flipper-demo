@@ -92,8 +92,6 @@ fun NavGraphBuilder.addHomeGraph(
         Profile(modifier)
     }
     composable(HomeSections.DEMO.route) {
-//        val viewModel = hiltViewModel<DemoViewModel>()
-//        Demo(modifier = modifier, viewModel = viewModel)
         Demo()
     }
 }

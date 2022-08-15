@@ -22,6 +22,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
@@ -31,6 +32,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.jetsnack.R
+import com.example.jetsnack.core.Analytics
 import com.example.jetsnack.ui.home.cart.CartViewModel
 import com.example.jetsnack.ui.theme.JetsnackTheme
 
@@ -39,6 +41,10 @@ fun Profile(
     modifier: Modifier = Modifier,
     viewModel: CartViewModel = viewModel(factory = CartViewModel.provideFactory())
 ) {
+
+    LaunchedEffect(true) {
+        Analytics.trackPage("Profile")
+    }
 
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,

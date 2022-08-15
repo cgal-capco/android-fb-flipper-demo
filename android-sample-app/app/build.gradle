@@ -136,6 +136,8 @@ dependencies {
     kapt Libs.Room.compiler
     implementation Libs.Room.kotlinExtensions
 
+    implementation Libs.ThreeTen.threetenabp
+
     debugImplementation Libs.Flipper.flipper
     debugImplementation Libs.Flipper.soloader
     releaseImplementation Libs.Flipper.noOp

@@ -144,4 +144,8 @@ object Libs {
         const val flipperPlugin = "com.facebook.flipper:flipper-leakcanary2-plugin:$version"
         const val networkPluggin = "com.facebook.flipper:flipper-network-plugin:$version"
     }
+
+    object  ThreeTen {
+        const val threetenabp = "com.jakewharton.threetenabp:threetenabp:1.4.0"
+    }
 }
