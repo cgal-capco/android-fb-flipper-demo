@@ -20,7 +20,7 @@ object AnalyticsPlugin : FlipperPlugin {
         connection = null
     }
 
-    override fun runInBackground(): Boolean = false
+    override fun runInBackground(): Boolean = true
 
     fun trackPage(pageName: String) {
         sendFlipperObject("page-view", pageName)
@@ -31,9 +31,8 @@ object AnalyticsPlugin : FlipperPlugin {
     }
 
     private fun sendFlipperObject(type: String, value: String) {
-        val now = OffsetDateTime.now()
         val flipperData = FlipperObject.Builder()
-            .put("timestamp", now.toString())
+            .put("timestamp", OffsetDateTime.now().toString())
             .put("type", type)
             .put("value", value)
             .build()
